@@ -46,6 +46,9 @@ group :development, :test do
 
   # A library for generating fake data such as names, addresses, and phone numbers.
   gem 'faker'
+
+  # A runtime developer console and IRB alternative with powerful introspection capabilities.
+  gem 'pry', '~> 0.14.2'
 end
 
 group :development do
