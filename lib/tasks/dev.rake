@@ -1,6 +1,9 @@
 namespace :dev do
   desc "Configura o ambiente de desenvolvimento"
   task setup: :environment do
+    show_spinner("Apagando BD...") { %x(rails db:drop) }
+    show_spinner("Criando BD...") { %x(rails db:create) }
+    show_spinner("Migrando BD...") { %x(rails db:migrate) }
 
     puts "Cadastrando os tipos de contato..."
     
@@ -38,9 +41,29 @@ namespace :dev do
         phone = contact.phones.create!(number: Faker::PhoneNumber.cell_phone_with_country_code)
       end
     end
-    
 
     puts "Telefones cadastrados com sucesso."
 
+    ##############################
+
+    puts "Cadastrando os endereços..."
+    
+    Contact.all.each do |contact|
+      address = Address.create!(
+        street: Faker::Address.street_address,
+        city: Faker::Address.city,
+        contact: contact,
+        
+      )
+    end
+
+    puts "Endereços cadastrados com sucesso."
+  end
+
+  def show_spinner(msg_start, msg_end = "Concluído!", &block)
+    spinner = TTY::Spinner.new("[:spinner] #{msg_start}")
+    spinner.auto_spin
+    yield
+    spinner.success("(#{msg_end})")
   end
 end
