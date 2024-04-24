@@ -4,6 +4,9 @@ ruby "3.2.0"
 
 gem "tty-spinner"
 
+#ActiveModel::Serializer implementation and Rails hooks
+gem 'active_model_serializers', '~> 0.10.0'
+
 # Repository for collecting Locale data for Ruby on Rails I18n as well as other interesting, Rails related I18n stuff
 gem 'rails-i18n', '~> 7.0.0' # For 7.0.0
 
