@@ -4,7 +4,10 @@ ruby "3.2.0"
 
 gem "tty-spinner"
 
-#ActiveModel::Serializer implementation and Rails hooks
+# A ruby implementation of the RFC 7519 OAuth JSON Web Token (JWT) standard.
+gem 'jwt'
+
+# ActiveModel::Serializer implementation and Rails hooks
 gem 'active_model_serializers', '~> 0.10.0'
 
 # Repository for collecting Locale data for Ruby on Rails I18n as well as other interesting, Rails related I18n stuff
