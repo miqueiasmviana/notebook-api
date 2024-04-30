@@ -4,6 +4,9 @@ ruby "3.2.0"
 
 gem "tty-spinner"
 
+# Token based authentication for Rails JSON APIs. Designed to work with jToker and ng-token-auth.
+gem "devise_token_auth", ">= 1.2.0", git: "https://github.com/lynndylanhurley/devise_token_auth"
+
 # A ruby implementation of the RFC 7519 OAuth JSON Web Token (JWT) standard.
 gem 'jwt'
 
