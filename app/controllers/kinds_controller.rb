@@ -1,6 +1,7 @@
 class KindsController < ApplicationController
 
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
+
   # TOKEN = "secret123"
   # include ActionController::HttpAuthentication::Token::ControllerMethods
   
@@ -9,7 +10,8 @@ class KindsController < ApplicationController
   # include ActionController::HttpAuthentication::Digest::ControllerMethods
   # USERS = {"miqueias" => "secret", #plain text password
   #          "jack" => Digest::MD5.hexdigest(["jack","Application","secret"].join(":"))}
-  before_action :authenticate
+  # before_action :authenticate
+
   before_action :set_kind, only: %i[ show update destroy ]
 
   # GET /kinds
