@@ -4,6 +4,12 @@ ruby "3.2.0"
 
 gem "tty-spinner"
 
+# Link header pagination for Rails and Grape APIs.
+gem 'api-pagination'
+
+# A Scope & Engine based, clean, powerful, customizable and sophisticated paginator for Ruby webapps
+gem 'kaminari' #, '~> 1.0.1'
+
 # A plugin for versioning Rails based RESTful APIs.
 gem 'versionist', '~> 1.5.0'
 
