@@ -8,6 +8,11 @@ Rails.application.configure do
     port: 3000
   }
 
+  config.hosts << "meusite.local"
+  config.hosts << "v1.meusite.local"
+  config.hosts << "v2.meusite.local"
+
+
 
 
   # In the development environment your application's code is reloaded any time
