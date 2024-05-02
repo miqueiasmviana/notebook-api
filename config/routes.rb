@@ -4,8 +4,7 @@ Rails.application.routes.draw do
   resource :auths, only: [:create]
   resources :kinds
 
-  constraints subdomain: 'v1' do
-    scope module: 'v1' do
+  api_version(:module => 'v1', :path => {:value => 'v1'}) do
       resources :contacts do
         resource :kind, only: [:show]
         resource :kind, only: [:show], path: 'relationships/kind'
@@ -19,11 +18,9 @@ Rails.application.routes.draw do
         resource :address, only: [:show, :create, :update, :destroy], path: 'relationships/address'
       end
     end
-  end
 
-  constraints subdomain: 'v2' do
-    scope module: 'v2' do
-      resources :contacts do 
+    api_version(:module => 'v2', :path => {:value => 'v2'}) do
+      resources :contacts do
         resource :kind, only: [:show]
         resource :kind, only: [:show], path: 'relationships/kind'
 
@@ -36,7 +33,6 @@ Rails.application.routes.draw do
         resource :address, only: [:show, :create, :update, :destroy], path: 'relationships/address'
       end
     end
-  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
