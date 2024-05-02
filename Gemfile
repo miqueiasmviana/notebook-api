@@ -4,6 +4,9 @@ ruby "3.2.0"
 
 gem "tty-spinner"
 
+# A plugin for versioning Rails based RESTful APIs.
+gem 'versionist', '~> 1.5.0'
+
 # Token based authentication for Rails JSON APIs. Designed to work with jToker and ng-token-auth.
 gem "devise_token_auth", ">= 1.2.0", git: "https://github.com/lynndylanhurley/devise_token_auth"
 gem 'devise-i18n'
