@@ -11,6 +11,7 @@ module V1
 
       @contacts = Contact.all.page(page_number).per(per_page)
 
+      # expires_in 30.seconds, public: true
       render  json: @contacts
       # paginate json: @contacts
     end
