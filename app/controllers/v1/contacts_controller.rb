@@ -10,9 +10,10 @@ module V1
       per_page = params[:page].try(:[], :size)
 
       @contacts = Contact.all.page(page_number).per(per_page)
-
+      if stale?(last_modified: @contacts[0].updated_at)
+        render  json: @contacts
+      end
       # expires_in 30.seconds, public: true
-      render  json: @contacts
       # paginate json: @contacts
     end
 
