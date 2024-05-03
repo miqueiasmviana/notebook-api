@@ -2,6 +2,8 @@ require_relative "boot"
 
 require "rails/all"
 
+require_relative '../lib/middleware/app_name'
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -28,5 +30,13 @@ module NotebookApi
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    # config.autoload_paths << Rails.root.join('lib')
+
+    # config.middleware.use Rack::Static, urls: ["/favicon.ico", "/robots.txt", "/images", "/css", "/js"], root: "public"
+
+    # config.middleware.use AppName
+    config.middleware.use AppName
+
   end
 end
