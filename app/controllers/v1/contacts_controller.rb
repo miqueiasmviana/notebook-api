@@ -1,5 +1,7 @@
 module V1 
   class ContactsController < ApplicationController
+
+    include ErrorSerializer
     before_action :set_contact, only: %i[ show update destroy ]
     
     # GET /contacts
@@ -8,7 +10,7 @@ module V1
       per_page = params[:page].try(:[], :size)
 
       @contacts = Contact.all.page(page_number).per(per_page)
-      
+
       render  json: @contacts
       # paginate json: @contacts
     end
@@ -25,7 +27,7 @@ module V1
       if @contact.save
         render json: @contact, include: [:kind, :phones, :address], status: :created, location: v1_contact_url(@contact)
       else
-        render json: @contact.errors, status: :unprocessable_entity
+        render json: ErrorSerializer.serialize(@contact.errors) #@contact.errors, status: :unprocessable_entity
       end
     end
 
